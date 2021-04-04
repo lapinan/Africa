@@ -17,9 +17,9 @@ struct BrowseView: View {
             .frame(height: 300)
             .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
           
-          ForEach(0 ..< animals.count) { item in
-            NavigationLink(destination: DetailAnimalView()) {
-              AnimalListView(animal: animals[item])
+          ForEach(animals) { animal in
+            NavigationLink(destination: DetailAnimalView(animal: animal)) {
+              AnimalListView(animal: animal)
             }
           }
         } //: List
