@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CoverImageView: View {
   
-  let images = Bundle.main.decode("covers.json")
+  let images: [CoverImage] = Bundle.main.decode("covers.json")
   
     var body: some View {
       TabView {
