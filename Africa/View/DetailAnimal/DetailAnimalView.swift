@@ -66,7 +66,7 @@ struct DetailAnimalView: View {
             HeadingView(image: "books.vertical", text: "Lear more")
             LinkItemView(animal: animal)
           }
-          .padding(.horizontal)
+          .padding([.horizontal, .bottom])
         } //: VStack
         .navigationBarTitle("Learn about \(animal.name)", displayMode: .inline)
         .scaleEffect(isAnimation ? 1.0 : 0.6)
