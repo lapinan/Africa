@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DetailAnimalView: View {
   let animal: Animal
+  @State private var isAnimation = false
   
     var body: some View {
       ScrollView(showsIndicators: false) {
@@ -16,6 +17,7 @@ struct DetailAnimalView: View {
           Image(animal.image)
             .resizable()
             .scaledToFit()
+            
           
           Text(animal.name)
             .font(.largeTitle)
@@ -38,9 +40,42 @@ struct DetailAnimalView: View {
             ImagesGalleryView(animal: animal)
           }
           .padding(.horizontal)
+          
+          Group {
+            HeadingView(image: "questionmark.circle", text: "Did yout know?")
+            
+            AnimalFactsView(animal: animal)
+          }
+          .padding(.horizontal)
+          
+          Group {
+            HeadingView(image: "info.circle", text: "All about \(animal.name)")
+            
+            Text(animal.description)
+          }
+          .padding(.horizontal)
+          
+          Group {
+            HeadingView(image: "map", text: "National Parks")
+            
+            MapDetailAnimalView()
+          }
+          .padding(.horizontal)
+          
+          Group {
+            HeadingView(image: "books.vertical", text: "Lear more")
+            LinkItemView(animal: animal)
+          }
+          .padding(.horizontal)
         } //: VStack
         .navigationBarTitle("Learn about \(animal.name)", displayMode: .inline)
+        .scaleEffect(isAnimation ? 1.0 : 0.6)
       } //: Scroll
+      .onAppear() {
+        withAnimation(.easeOut(duration: 0.5)) {
+          isAnimation = true
+        }
+      }
     }
 }
 
