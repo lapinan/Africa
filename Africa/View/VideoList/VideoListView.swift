@@ -2,14 +2,37 @@
 //  VideoListView.swift
 //  Africa
 //
-//  Created by Андрей Лапин on 04.04.2021.
+//  Created by Андрей Лапин on 05.04.2021.
 //
 
 import SwiftUI
+import AudioToolbox
 
 struct VideoListView: View {
+  @State var videos: [Video] = Bundle.main.decode("videos.json")
+  
     var body: some View {
-        Text("Videos")
+      NavigationView {
+        List {
+          ForEach(videos) { video in
+            NavigationLink(destination: MapView()) {
+              VideoItemView(video: video)
+                .padding(.vertical, 8)
+            }
+          } //: Loop
+        } //: List
+        .listStyle(InsetGroupedListStyle())
+        .navigationBarTitle("VideoList", displayMode: .inline)
+        .navigationBarItems(
+          trailing:
+            Button(action: {
+              videos.shuffle()
+              AudioServicesPlaySystemSound(1520)
+            }, label: {
+              Image(systemName: "arrow.2.squarepath")
+            })
+        )
+      } //: NavigationView
     }
 }
 

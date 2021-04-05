@@ -63,7 +63,7 @@ struct DetailAnimalView: View {
           .padding(.horizontal)
           
           Group {
-            HeadingView(image: "books.vertical", text: "Lear more")
+            HeadingView(image: "books.vertical", text: "Learn more")
             LinkItemView(animal: animal)
           }
           .padding([.horizontal, .bottom])
