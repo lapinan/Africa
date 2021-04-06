@@ -22,13 +22,52 @@ struct MapView: View {
     var body: some View {
       Map(coordinateRegion: $region, annotationItems: locations) { item in
         MapAnnotation(coordinate: item.locationRegion) {
-          Image("logo")
+          MapAnnotationView(location: item)
+        }
+      } //: Map
+      .overlay(
+        HStack(spacing: 12) {
+          Image("compass")
             .resizable()
             .scaledToFit()
-            .frame(width: 32)
+            .frame(width: 48)
+          
+          VStack(alignment: .leading, spacing: 3) {
+            HStack {
+              Text("Latitude:")
+                .fontWeight(.bold)
+                .foregroundColor(Color.accentColor)
+              
+              Spacer()
+              
+              Text("\(region.center.latitude)")
+            } //: HStack - LATITUDE
+            
+            Divider()
+            
+            HStack {
+              Text("Longitude:")
+                .fontWeight(.bold)
+                .foregroundColor(Color.accentColor)
+              
+              Spacer()
+              
+              Text("\(region.center.longitude)")
+            } //: HStack - LONGITUDE
+          }//: VStack
+          .font(.footnote)
+          .foregroundColor(.white)
         }
-      }
-      .edgesIgnoringSafeArea(.top)
+        .padding(.vertical, 12)
+        .padding(.horizontal, 16)
+        .background(
+          Color.black
+            .cornerRadius(8)
+            .opacity(0.6)
+        )
+        .padding()
+        , alignment: .top
+      )
     }
 }
 
