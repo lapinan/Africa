@@ -11,7 +11,20 @@ import AVKit
 struct VideoPlayerView: View {
   let video: Video
   
+  
     var body: some View {
-      VideoPlayer(player: AVPlayer(url: Bundle.main.url(forResource: video.id, withExtension: "mp4")!))
+      VStack {
+        VideoPlayer(player: playVideo(fileName: video.id, fileFormat: "mp4")) {
+        }
+        .overlay(
+          Image("logo")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 32)
+            .padding()
+          , alignment: .topLeading
+        )
+      }
+      .navigationBarTitle(video.name, displayMode: .inline)
     }
 }
