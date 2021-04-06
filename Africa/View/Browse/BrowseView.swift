@@ -40,7 +40,7 @@ struct BrowseView: View {
                   }
                 } //: Loop
               } //: Grid
-              .animation(Animation.interpolatingSpring(stiffness: 0.5, damping: 0.5).speed(10))
+              .animation(Animation.easeOut(duration: 0.25))
               .padding(10)
             } //: ScrollView
           }
