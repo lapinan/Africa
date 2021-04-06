@@ -9,7 +9,6 @@ import SwiftUI
 
 struct DetailAnimalView: View {
   let animal: Animal
-  @State private var isAnimation = false
   
     var body: some View {
       ScrollView(showsIndicators: false) {
@@ -69,13 +68,7 @@ struct DetailAnimalView: View {
           .padding([.horizontal, .bottom])
         } //: VStack
         .navigationBarTitle("Learn about \(animal.name)", displayMode: .inline)
-        .scaleEffect(isAnimation ? 1.0 : 0.6)
       } //: Scroll
-      .onAppear() {
-        withAnimation(.easeOut(duration: 0.5)) {
-          isAnimation = true
-        }
-      }
     }
 }
 
