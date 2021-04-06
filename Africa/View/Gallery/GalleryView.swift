@@ -11,7 +11,7 @@ import AudioToolbox
 struct GalleryView: View {
   @State fileprivate var selectedAnimal: String = "lion"
   @State fileprivate var gridColumn: Double = 3.0
-  @State fileprivate var items: [GridItem] = [GridItem(.flexible())]
+  @State fileprivate var items: [GridItem] = Array(repeating: GridItem(.flexible()), count: 3)
   
   fileprivate let animals: [Animal] = Bundle.main.decode("animals.json")
   
@@ -50,9 +50,6 @@ struct GalleryView: View {
             }
           }
           .animation(.easeIn)
-          .onAppear(perform: {
-            gridSwitch()
-          })
         }
         .padding(.horizontal, 10)
         .padding(.vertical, 50)
