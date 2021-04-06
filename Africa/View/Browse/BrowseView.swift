@@ -88,7 +88,7 @@ extension BrowseView {
     case 2:
       return "square.grid.3x2"
     default:
-      return "square"
+      return "rectangle.grid.1x2"
     }
   }
 }
