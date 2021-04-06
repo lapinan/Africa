@@ -6,10 +6,29 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct MapView: View {
+  @State private var region: MKCoordinateRegion = {
+    let mapCoordinates = CLLocationCoordinate2D(latitude: 6.600286, longitude: 16.4377599)
+    let maxZoomLevel = MKCoordinateSpan(latitudeDelta: 70.0, longitudeDelta: 70.0)
+    let mapRegion = MKCoordinateRegion(center: mapCoordinates, span: maxZoomLevel)
+    
+    return mapRegion
+  }()
+  
+  let locations: [LocationNationalPark] = Bundle.main.decode("locations.json")
+  
     var body: some View {
-        Text("Map")
+      Map(coordinateRegion: $region, annotationItems: locations) { item in
+        MapAnnotation(coordinate: item.locationRegion) {
+          Image("logo")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 32)
+        }
+      }
+      .edgesIgnoringSafeArea(.top)
     }
 }
 

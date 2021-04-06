@@ -27,7 +27,7 @@ struct VideoListView: View {
           trailing:
             Button(action: {
               videos.shuffle()
-              AudioServicesPlaySystemSound(1520)
+              AudioServicesPlaySystemSound(1519)
             }, label: {
               Image(systemName: "arrow.2.squarepath")
             })
