@@ -17,7 +17,7 @@ struct MotionAnimationView: View {
           ForEach(0...randomCircle, id: \.self) { item in
             Circle()
               .fill(Color.gray)
-              .frame(width: randomSize(), alignment: .center)
+              .frame(width: randomSize(), height: randomSize(), alignment: .center)
               .opacity(0.15)
               .scaleEffect(isAnimation ? randomScale() : 1.0)
               .position(x: randomCoordinate(max: geometry.size.width), y: randomCoordinate(max: geometry.size.height))
