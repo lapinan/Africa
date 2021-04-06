@@ -15,7 +15,7 @@ struct VideoListView: View {
       NavigationView {
         List {
           ForEach(videos) { video in
-            NavigationLink(destination: MapView()) {
+            NavigationLink(destination: VideoPlayerView(video: video)) {
               VideoItemView(video: video)
                 .padding(.vertical, 8)
             }
